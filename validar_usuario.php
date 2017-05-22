@@ -37,7 +37,10 @@
 		//Muestra en pantalla mensaje de exito y un link para continuar
 		echo "¡Bienvenido ".$fila[1]."!";
 		echo '<br /><a href="index_user.html">Continuar</a>';
-	}else{}//Caso que el usuario o clave esten mal
+	}else{
+		echo "La clave no coincide o la cuenta no existe";
+		echo '<br /><a href="iniciar_sesion.html">Volver a intentar</a>';
+	}//Caso que el usuario o clave esten mal
 		
 	mysql_close($conn);
 ?>
