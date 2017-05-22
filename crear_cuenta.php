@@ -33,18 +33,24 @@
 			//Inserto el nuevo usuario
 			$sql = "INSERT INTO usuarios (email, name, last_name, IsAdministrador, credit, password, reputation, score)
 				VALUES ('$email','$name','$last_name',0,0,'$password1',0,0)";
-			
-			echo "Datos registrados: "."<br>"."<br>";
-			echo "Nombre: ".$name."<br>";
-			echo "Apellido: ".$last_name."<br>";
-			echo "Email: ".$email."<br>";
-			echo "Telefono: ".$phone."<br>";
-			echo '<br /><a href="index.html">Continuar</a>';
+			if ($conn->query($sql)){
+				echo "Datos registrados: "."<br>"."<br>";
+				echo "Nombre: ".$name."<br>";
+				echo "Apellido: ".$last_name."<br>";
+				echo "Email: ".$email."<br>";
+				echo "Telefono: ".$phone."<br>";
+				echo '<br /><a href="index.html">Continuar</a>';
+			}
 		}
 			else{
-		echo "El email ya existe";} 
-				// Estaría bueno que le pregunte si quiere recibir un mail con su contraseña
-	} else {echo "Las contraseñas no coinciden";}
+				echo '<br>El email ya existe';
+				echo '<br /><a href="iniciar_sesion.html">Enviame un email con mi clave</a>';
+			}
+				
+	} else {echo "Las contraseñas no coinciden";
+			echo '<br /><a href="crear_cuenta.html">Volver a intentarlo</a>';
+			echo '<br /><a href="index.html">Enviame un email con mi clave</a>';
+			}
 	
 
 
