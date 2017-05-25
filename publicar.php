@@ -33,14 +33,18 @@
 					$image = addslashes(file_get_contents($_FILES['image']['tmp_name'])); //Use este video https://www.youtube.com/watch?v=K9YW1sWJuR4
 					$query= "INSERT INTO publicaciones(publication_date,owner,selected,selected_coment,selected_calification,limit_date,body,site,title,image,category)
 					VALUES('$date','$user','','','pendiente','$limit_date','$text','$site','$title','$image','$category')";
+					
 				} else { 
 					//Si no se leyo entonces guardo solo guardo los demas datos
 					$query= "INSERT INTO publicaciones(publication_date,owner,selected,selected_coment,selected_calification,limit_date,body,site,title,category)
 					VALUES('$date','$user','','','pendiente','$limit_date','$text','$site','$title','$category')";
-					
 					}
+				if ($conn->query($sql)){
+					header('Location: index.php');
+				}else{ echo "Error al conectar con la base de datos, no se pudo publicar la gauchada";}
 			} else {
-				echo "Error al conectar con la base de datos";
+				echo "Error al conectar con la base de datos, no se pudo descontar el credito";
+				echo '<br /><a href="index.php">Volver al sitio</a>';
 			}
 		
 		
@@ -51,7 +55,7 @@
 		}
 	}
 	else{
-		echo 'Adeuda calificar usuarios';
+		echo 'Usted debe calificar todas las gauchadas terminadas para pedir una nueva';
 		echo '<br /><a href="">Ver mis gauchadas(todavia no disponible)</a>'.' '.'<br /><a href="index.php">Volver al sitio</a>';
 	}
 	

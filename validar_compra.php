@@ -27,8 +27,7 @@
 	//Sumo al contador de creditos
 	$sql = "UPDATE usuarios SET credit = credit + $amount WHERE email = '$email'";
 	if ($conn->query($sql) === TRUE) {
-		echo '<br>Se ha agregado el dinero a su cuenta';
-		echo '<br /><a href="index.php">Continuar</a>';
+		header('Location: index.php');
 	} else {
 		echo "Error: " . $sql . "<br>" . $conn->error;
 	}

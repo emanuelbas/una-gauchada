@@ -21,7 +21,7 @@
             <input id="image" name="image" type="file" accept="image/jpeg" size="30">
 			
 			<P>Describa la gauchada<BR>
-			<TEXTAREA name="body" rows="10" cols="30"></TEXTAREA><BR>
+			<TEXTAREA REQUIRED name="body" rows="10" cols="30"></TEXTAREA><BR>
 			
 			<p>Indique el lugar y la fecha límite<br>
             <INPUT REQUIRED type="text" id="site" name="site"><INPUT REQUIRED placeholder="dd/mm/aaaa" type="date" id="date" name="limit_date">

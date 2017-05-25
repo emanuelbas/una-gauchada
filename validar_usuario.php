@@ -20,8 +20,7 @@
 		$_SESSION["last_name"]=$fila[2];
 		$_SESSION["IsAdministador"]=$fila[3];
 		//Muestra en pantalla mensaje de exito y un link para continuar
-		echo "Bienvenido ".$fila[1]."!";
-		echo '<br /><a href="index.php">Continuar</a>';
+		header('Location: index.php');
 	}else{
 		echo "La clave no coincide o la cuenta no existe";
 		echo '<br /><a href="iniciar_sesion.html">Volver a intentar</a>';
