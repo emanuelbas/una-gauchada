@@ -1,0 +1,11 @@
+a {
+	border:1px ridge #ccc;
+	color:DarkOrange;
+	background: #FFEFD5;
+	border:1px solid DarkOrange;
+	border-radius: 5px;
+	border-style: outset;
+	text-decoration:none;
+	font-size:120%;
+	
+}

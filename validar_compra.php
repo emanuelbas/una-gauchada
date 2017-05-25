@@ -1,14 +1,6 @@
 <?php
 
-	//datos de conexion
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "gauchada";
-	//creo la conexion
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	//reviso que conecte
-	if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);} 
+	include 'conectar.php';
 	
 	//Voy a usar estas variables la de mail es temporal hasta tener iniciar sesion luego reemplazarla por
 	session_start();
@@ -27,7 +19,7 @@
 			VALUES ('$email', CURRENT_DATE(), '$amount*50', '$amount')";
 			
 	if ($conn->query($sql) === TRUE) {
-		echo "¡Se registro el pago!";
+		echo "Se registro el pago!";
 	} else {
 		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
@@ -35,8 +27,8 @@
 	//Sumo al contador de creditos
 	$sql = "UPDATE usuarios SET credit = credit + $amount WHERE email = '$email'";
 	if ($conn->query($sql) === TRUE) {
-		echo '<br>¡Se ha añadido el dinero a su cuenta';
-		echo '<br /><a href="index_user.html">Continuar</a>';
+		echo '<br>Se ha agregado el dinero a su cuenta';
+		echo '<br /><a href="index.php">Continuar</a>';
 	} else {
 		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
