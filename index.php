@@ -22,7 +22,10 @@
 				
 			?>
 		<div align="center"><h1 ALIGN=center>Una Gauchada</h2>
-        
+        <br><br>
+		<?php
+			include 'ver_gauchadas.php';
+		?>
         </div>
 		
 		<footer>

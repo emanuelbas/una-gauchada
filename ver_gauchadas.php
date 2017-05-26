@@ -1,0 +1,28 @@
+<?php
+	//ESTE MODULO ES UTILIZADO EN INDEX.PHP
+	include 'conectar.php';
+
+	
+	//Todas las publicaciones que no expiraron
+	date_default_timezone_set('America/Argentina/Buenos_Aires');
+	$date = date('m/d/Y h:i:s a', time());
+	$sql = "SELECT * FROM publicaciones WHERE selected=''"; //hay que arreglar el tema del date WHERE limit_date < '$date'
+	$resultado = mysqli_query($conn,$sql);
+	while ($fila = mysqli_fetch_array($resultado,MYSQLI_ASSOC)){//Para cada publicacion
+		
+		echo '<br>';
+		if($fila['image']=='') 
+			echo "<img src=images/logo.png>";
+		else 
+			echo "<img src='data:image/jpg;base64,".base64_encode($fila['image'])."'/>";
+		
+		echo '<h2>'.$fila['title'].'</h2>';
+		echo '<p>'.$fila['body'].'</p>';
+		echo '<a href="ver_detalles.php?id='.$fila['id'].'">Ver detalles</a>';
+		echo '<br>';
+		
+		
+	}
+	
+	
+?>
