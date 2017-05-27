@@ -25,7 +25,7 @@
 				$title=$_POST['titulo'];
 				$text=$_POST['body'];
 				date_default_timezone_set('America/Argentina/Buenos_Aires');
-				$date = date('m/d/Y h:i:s a', time());
+				$date = date('Y-m-d H:i:s', time());
 				if (($_FILES['image']['tmp_name']) != "") {
 					//Si se leyo una imagen la almaceno en la BD
 					$image = addslashes(file_get_contents($_FILES['image']['tmp_name'])); //Use este video https://www.youtube.com/watch?v=K9YW1sWJuR4

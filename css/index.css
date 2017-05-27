@@ -9,3 +9,10 @@ a {
 	font-size:120%;
 	
 }
+
+span{
+	border:1px ridge #ccc;
+	color:black;
+	border-style: outset;
+	border-radius: 5px;
+}

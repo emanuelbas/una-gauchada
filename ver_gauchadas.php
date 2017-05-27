@@ -5,8 +5,8 @@
 	
 	//Todas las publicaciones que no expiraron
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
-	$date = date('m/d/Y h:i:s a', time());
-	$sql = "SELECT * FROM publicaciones WHERE selected=''"; //hay que arreglar el tema del date WHERE limit_date < '$date'
+	$date = date('Y-m-d', time());
+	$sql = "SELECT * FROM publicaciones WHERE selected='' AND limit_date >= '".$date."' ORDER BY publication_date"; //hay que arreglar el tema del date WHERE limit_date < '$date'
 	$resultado = mysqli_query($conn,$sql);
 	while ($fila = mysqli_fetch_array($resultado,MYSQLI_ASSOC)){//Para cada publicacion
 		
