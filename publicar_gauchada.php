@@ -6,7 +6,12 @@
 
 <html>
 <head>
-	<img src="images/logo.png">
+	<div style="position:relative">
+		<img src="images/banner.png"  />
+		<div style="position:absolute; top:300; left:580;">
+			<img border="0"  src="images/logo.png" width="80" /></a>
+		</div>
+	</div>	
 	<title>Publicar gauchada</title>
 	<link rel="stylesheet" href="css/estilos.css">
 

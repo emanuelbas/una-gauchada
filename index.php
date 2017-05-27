@@ -3,8 +3,8 @@
 		<meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<div style="position:relative">
-			<img src="images/banner.png" width="1000"  height="268"  />
-			<div style="position:absolute; top:220; left:480;">
+			<img src="images/banner.png"  />
+			<div style="position:absolute; top:300; left:580;">
 				<img border="0"  src="images/logo.png" width="80" /></a>
 			</div>
 		</div>
