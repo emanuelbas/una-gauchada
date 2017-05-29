@@ -1,18 +1,177 @@
-a {
+*{
+/*	padding: 0;
+	margin: 0;*/
+   font-family: "Helvetica Neue",HelveticaNeue,Arial,sans-serif;
+
+}
+/*a {
 	border:1px ridge #ccc;
 	color:DarkOrange;
-	background: #FFEFD5;
+	background: #120747;
+	margin: 10px;
 	border:1px solid DarkOrange;
 	border-radius: 5px;
 	border-style: outset;
 	text-decoration:none;
 	font-size:120%;
 	
+}*/
+#title-index{
+	font-family:'Gibson', sans-serif, "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 }
-
 span{
 	border:1px ridge #ccc;
 	color:black;
 	border-style: outset;
 	border-radius: 5px;
 }
+.banner{
+	position:relative;
+	
+}
+.image-banner{
+	width: 100%;
+	border-radius: 15px;
+}
+
+.det-post{
+	margin: 20px;
+	border: solid 1px;
+}
+
+.det-post-image{
+	display: inline-block;
+	width: 40%;
+	margin: 10px;
+	padding: 10 50 10 50;
+	text-align: center;
+}
+.post-image{
+	padding: 50px;
+	width: 140px;
+}
+.det-post-article{
+	display: inline-block;
+	width: 40%;
+	margin: 10px;
+	padding: 10 50 10 50;
+	border: solid 1px;
+	border-radius: 10px;
+}
+
+
+.nav-menu {    
+	height: 70px;
+    position: relative;
+    z-index: 1000;
+    background-color: #fff;
+
+   }
+.nav-menu ul{
+   list-style-type: none;
+   text-align: center;
+}
+.nav-menu li{
+   display: inline;
+   text-align: center;
+   margin: 0 10px 0 0;
+}
+.nav-menu li a {
+   padding: 2px 7px 2px 7px;
+   color: #666;
+   background-color: #eeeeee;
+   border: 1px solid #ccc;
+   text-decoration: none;
+}
+.nav-menu li a:hover{
+   background-color: #333333;
+   color: #ffffff;
+}
+.nav-icono{ 
+	position:absolute;
+	top:85%;
+	left:45%;
+	height:45%;
+	border:none;
+	z-index:20000;
+}
+.nav-icono-logo{
+
+	border-radius: 15px;
+	 border: 1px solid;
+	 bottom: 40px;
+}
+
+.cuadro-gauchada{
+
+height:40%;
+width:40%;
+border:2px solid black;
+
+}
+
+/*#footer {
+    background-color: #F3F3F3;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+
+.form-crear-cuenta form{
+    float:left;
+    padding:2px;
+    cursor:pointer;
+    display:block;
+    width:290px;
+    margin:auto;
+    text-align:left;
+    border:1px solid #ccc;
+}*/.form-crear-cuenta
+{
+	
+	margin: 10% 38%;
+	float: left; 
+}
+form
+{
+   float:left;
+   padding:2px;
+   cursor:pointer;
+   display:block;
+   width:290px;
+   margin:auto;
+   text-align:left;
+   align-items: center ; 
+   justify-content: center;
+
+}
+legend
+{
+   font-weight: bold;
+}
+label
+{
+   display: block;
+   padding:2px;
+   margin:2px;
+   cursor:pointer;
+}
+
+input,select{
+   margin:2px; 
+  /* font-family: "Trebuchet MS", Geneva, Arial, Helvetica, sans-serif;*/
+   font-size: 12px;
+   display: block;
+}
+.noblck
+{
+   display: inline;
+}
+
+fieldset{
+   width: 100%;
+   display: block;
+}
+

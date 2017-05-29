@@ -1,19 +1,5 @@
-
-    <head><title>Una gauchada</title>
-		<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<div style="position:relative">
-			<img src="images/banner.png"  />
-			<div style="position:absolute; top:300; left:580;">
-				<img border="0"  src="images/logo.png" width="80" /></a>
-			</div>
-		</div>
-		<link rel="stylesheet" href="css/index.css">
-    </head>
-
-
 <?php
-
+	include 'head.php';
 	include 'conectar.php';
 	
 	//Controlo que se hayan llenado todos los campos
@@ -46,16 +32,16 @@
 				}
 			}
 				else{
-					echo '<br>El email ya existe';
-					echo '<br /><a href="iniciar_sesion.html">Enviame un email con mi clave</a>';
+					echo '<div align="center"><h2><img src="images/gaucho.jpg" width="15%">El email ya existe</h2>';
+					echo '<a href="iniciar_sesion.php">Enviame un email con mi clave</a><div>';
 				}
 					
-		} else {echo "<img src='http://wp.clicrbs.com.br/cacaumenezes/files/2013/01/GauchoTriste.jpg' width='200'><h3> Las contraseñas no coinciden</h3>";
+		} else {echo '<div align="center"><h2><img src="images/gaucho.jpg" width="15%">Las contraseñas no coinciden</h2>';
 				echo '<br /><a href="crear_cuenta.html">Volver a intentarlo</a>';
-				echo '<a href="index.php">Enviame un email con mi clave</a>';
+				echo '<br /><a href="index.php">Enviame un email con mi clave</a></div>';
 				}
 				
-	} else {echo '<br /><a href="crear_cuenta.html">Debe completar todos los campos</a>';}
+	} else {echo '<br /><a href="crear_cuenta.php">Debe completar todos los campos</a>';}
 		
 
 

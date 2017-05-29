@@ -5,53 +5,42 @@
 ?>
 
 <html>
-<head>
-	<div style="position:relative">
-		<img src="images/banner.png"  />
-		<div style="position:absolute; top:300; left:580;">
-			<img border="0"  src="images/logo.png" width="80" /></a>
-		</div>
-	</div>	
-	<title>Publicar gauchada</title>
-	<link rel="stylesheet" href="css/estilos.css">
-
-</head>
+<?php include 'head.php'; ?>
 <body>
-    <form enctype="multipart/form-data" method="post" action="publicar.php">
-		<div>
-			<p>Ingrese el titulo<br>
-            <INPUT REQUIRED id=titulo size=32 name=titulo> 
-            
-			<p>Ingrese foto del articulo<br>
-            <input id="image" name="image" type="file" accept="image/jpeg" size="30">
-			
-			<P>Describa la gauchada<BR>
-			<TEXTAREA REQUIRED name="body" rows="10" cols="30"></TEXTAREA><BR>
-			
-			<p>Lugar<br>
-            <INPUT REQUIRED type="text" id="site" name="site">
-			<p>Fecha limite<br>
-			<INPUT REQUIRED placeholder="aaaa-dd-mm" type="date" min=<?php echo date('Y-m-d');?> id="date" name="limit_date">
-			
-			<br><br>
-				<?php
-					echo '<select id="cat" name="cat">';
-					//echo '<option value="ninguna" selected="selected">- Seleccione una categoria -</option> '; Con esto se podria hacer que aparezca una preseleccionada
-					while ($fila = mysqli_fetch_array($respuesta, MYSQL_NUM)){
-						echo '<option value='.$fila[0].'>'.$fila[0].'</option>';
-					}
-					echo '</select>';
-					$conn->close(); 
-				?>
-			<br><br>
-			<INPUT type="submit" value="Publicar" >   
-			<a href="index.php">Cancelar</a>
+	<div class="form-crear-cuenta">
+	    <form enctype="multipart/form-data" method="post" action="publicar.php">
+			<fieldset>
+				<legend>Formulario de Contacto</legend>
+				<label>Ingrese el titulo</label>
+	            <INPUT REQUIRED id=titulo size=32 name=titulo> 
+	            
+				<label>Ingrese foto del articulo</label>
+	            <input id="image" name="image" type="file" accept="image/jpeg" size="30">
 				
+				<label>Describa la Gauchada</label>
+				<TEXTAREA REQUIRED name="body" rows="10" cols="30"></TEXTAREA><BR>
 				
+				<label>Lugar</label>
+	            <INPUT REQUIRED type="text" id="site" name="site">
 				
-			</P>
-	  
-	  </div>
-</form>
+				<label>Fecha Limite</label>
+				<INPUT REQUIRED placeholder="aaaa-dd-mm" type="date" min=<?php echo date('Y-m-d');?> id="date" name="limit_date">
+				
+					<?php
+						echo '<select id="cat" name="cat">';
+						//echo '<option value="ninguna" selected="selected">- Seleccione una categoria -</option> '; Con esto se podria hacer que aparezca una preseleccionada
+						while ($fila = mysqli_fetch_array($respuesta, MYSQL_NUM)){
+							echo '<option value='.$fila[0].'>'.$fila[0].'</option>';
+						}
+						echo '</select>';
+						$conn->close(); 
+					?>
+				<INPUT type="submit" value="Publicar" >   
+				<a href="index.php">Cancelar</a>
+				</P>
+		  
+	    	</fieldset>
+		</form>
+	</div>
 </body>
 </html>

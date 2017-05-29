@@ -1,3 +1,5 @@
+
+
 <?php
 	//ESTE MODULO ES UTILIZADO EN INDEX.PHP
 	include 'conectar.php';
@@ -16,10 +18,10 @@
 		else 
 			echo "<img src='data:image/jpg;base64,".base64_encode($fila['image'])."'/>";
 		
-		echo '<h2>'.$fila['title'].'</h2>';
-		echo '<p>'.$fila['body'].'</p>';
+		echo '<div align="left" style="border:1px solid #dbdbdb;padding:2% 1%; border-radius: 10px; 0 auto; width:35%;"><h2>'.$fila['title'].'</h2>';
+		echo '<p>'.$fila['body'].'</p></div>';
 		echo '<a href="ver_detalles.php?id='.$fila['id'].'">Ver detalles</a>';
-		echo '<br>';
+		echo '<br><br>';
 		
 		
 	}

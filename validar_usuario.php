@@ -1,5 +1,5 @@
 <?php
-
+	include 'head.php';
 	include 'conectar.php';
 
 	
@@ -22,8 +22,8 @@
 		//Muestra en pantalla mensaje de exito y un link para continuar
 		header('Location: index.php');
 	}else{
-		echo "La clave no coincide o la cuenta no existe";
-		echo '<br /><a href="iniciar_sesion.html">Volver a intentar</a>';
+		echo "<div align='center'><h2><img src='images/gaucho.jpg' width='15%'>La clave no coincide o la cuenta no existe</h2>";
+		echo '<br /><a href="iniciar_sesion.php">Volver a intentar</a></div>';
 	}//Caso que el usuario o clave esten mal
 		
 	mysqli_close($conn);
