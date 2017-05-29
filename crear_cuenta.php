@@ -23,11 +23,11 @@
 				$sql = "INSERT INTO usuarios (email, name, last_name, IsAdministrador, credit, password, reputation, score)
 					VALUES ('$email','$name','$last_name',0,0,'$password1',0,0)";
 				if ($conn->query($sql)){
-					echo "Datos registrados: "."<br>"."<br>";
-					echo "Nombre: ".$name."<br>";
-					echo "Apellido: ".$last_name."<br>";
-					echo "Email: ".$email."<br>";
-					echo "Telefono: ".$phone."<br>";
+					echo "<div class = 'Det-post-article'><h2> Datos registrados:</h2> ";
+					echo "<b>Nombre:</b> ".$name."<br>";
+					echo "<b>Apellido: </b>".$last_name."<br>";
+					echo "<b>Email: </b>".$email."<br>";
+					echo "<b>Telefono</b>: ".$phone."<br></div>";
 					echo '<br /><a href="index.php">Continuar</a>';
 				}
 			}
