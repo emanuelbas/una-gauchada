@@ -1,8 +1,7 @@
-<!doctype html>
-<html lang="en">
+<?php
+	include 'head.php';
+?>
 <html>
-<?php include 'head.php'; ?>
-
 <body>
 
 	<div class="form-crear-cuenta">

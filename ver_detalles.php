@@ -33,6 +33,7 @@
 		<div class = "det-post-article" >
 			<?php 
 				echo '<h2>' .$fila['title'].'</h2>';
+				echo '<p><b>Autor</b>: ' .$fila['owner'].'</p>';
 				echo '<p>' .$fila['body'].'</p>';
 				echo '<p> <b>Fecha limite:</b> ' .$fila['limit_date'].'</p>';
 				echo '<p><b>Lugar</b>: ' .$fila['site'].'</p>';

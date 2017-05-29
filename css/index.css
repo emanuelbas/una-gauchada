@@ -91,15 +91,16 @@ span{
 	position:absolute;
 	top:85%;
 	left:45%;
-	height:45%;
+	width: 20%;	
 	border:none;
-	z-index:20000;
+	z-index:10000;
 }
 .nav-icono-logo{
 
-	border-radius: 15px;
+	border-radius: 10px;
 	 border: 1px solid;
 	 bottom: 40px;
+	 width: 30%;
 }
 
 .cuadro-gauchada{

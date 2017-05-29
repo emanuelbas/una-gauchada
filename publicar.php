@@ -1,6 +1,6 @@
 <?php
 	include("conectar.php");
-	session_start(); 
+	include "head.php";
 	
 	$user=$_SESSION['email'];	
 	//hago la consulta para ver si puede publicar
@@ -46,13 +46,13 @@
 		
 
 		} else{
-			echo 'No posee creditos suficientes para realizar la publicacion';
-			echo '<br /><a href="comprar_credito.html">Comprar creditos</a>'.' '.'<br /><a href="index.php">Volver al sitio</a>';
+			echo "<div align='center'><h2><img src='images/gaucho.jpg' width='15%'>No posee creditos suficientes para realizar la publicacion";
+			echo "<br /><a href='comprar_credito.php'>Comprar creditos</a>"." "."<br /><a href='index.php'>Volver al sitio</a></div>";
 		}
 	}
 	else{
-		echo 'Usted debe calificar todas las gauchadas terminadas para pedir una nueva';
-		echo '<br /><a href="">Ver mis gauchadas(todavia no disponible)</a>'.' '.'<br /><a href="index.php">Volver al sitio</a>';
+		echo '<div align="center"><h2><img src="images/gaucho.jpg" width="15%">Usted debe calificar todas las gauchadas terminadas para pedir una nueva';
+		echo '<br /><a href="">Ver mis gauchadas(todavia no disponible)</a>'.' '.'<br /><a href="index.php">Volver al sitio</a></div>';
 	}
 	
 	mysqli_close($conn);

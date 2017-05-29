@@ -14,12 +14,12 @@
 		
 
 <?php 
-	SESSION_START();
-				
+	session_start();
+	echo "<div style='margin: 0.5%;'>";			
 	if ((isset($_SESSION['email']))){ 
-		echo '<li><a href="comprar_credito.php">Comprar credito</a></li> &nbsp;'.'<li><a href="cerrar_sesion.php">Cerrar sesion</a></li> &nbsp;'.'<li><a href="publicar_gauchada.php">Publicar gauchada</a></li> &nbsp;';
+		echo '<li><a href="comprar_credito.php">Comprar credito</a></li> '.'<li><a href="cerrar_sesion.php">Cerrar sesion</a></li> &nbsp;'.'<li><a href="publicar_gauchada.php">Publicar gauchada</a></li>';
 	} else { echo '<li><a href="iniciar_sesion.php">Iniciar sesion</a></li>'.'   '.'<li><a href="ventana_crear_cuenta.php">Crear una cuenta</a></li>'; }
-				
+	echo "</div>";			
 ?>
 
 </nav>	
