@@ -5,7 +5,8 @@
 	$user=$_SESSION['email'];	
 	//hago la consulta para ver si puede publicar
 	//consulto si adeuda calificar usuarios
-	$sql = "SELECT owner,selected_calification FROM publicaciones WHERE owner='$user' AND selected_calification='pendiente'"; 
+	//selected <> '' indica que solo contara las publicaciones donde aun no se selecciono un postulante
+	$sql = "SELECT owner,selected_calification FROM publicaciones WHERE owner='$user' AND selected_calification='pendiente' AND selected <> ''"; 
 	$comprobar = mysqli_query($conn, $sql);
 
 		
@@ -51,7 +52,7 @@
 		}
 	}
 	else{
-		echo '<div align="center"><h2><img src="images/gaucho.jpg" width="15%">Usted debe calificar todas las gauchadas terminadas para pedir una nueva';
+		echo '<div align="center"><h2><img src="images/gaucho.jpg" width="15%">Usted adeuda una calificacion. Califique la gauchada pendiente para poder crear una nueva';
 		echo '<br /><a href="">Ver mis gauchadas(todavia no disponible)</a>'.' '.'<br /><a href="index.php">Volver al sitio</a></div>';
 	}
 	

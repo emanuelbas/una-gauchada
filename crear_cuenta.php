@@ -37,11 +37,11 @@
 				}
 					
 		} else {echo '<div align="center"><h2><img src="images/gaucho.jpg" width="15%">Las contraseñas no coinciden</h2>';
-				echo '<br /><a href="crear_cuenta.html">Volver a intentarlo</a>';
+				echo '<br /><a href="ventana_crear_cuenta.php">Volver a intentarlo</a>';
 				echo '<br /><a href="index.php">Enviame un email con mi clave</a></div>';
 				}
 				
-	} else {echo '<br /><a href="crear_cuenta.php">Debe completar todos los campos</a>';}
+	} else {echo '<br /><a href="ventana_crear_cuenta.php">Debe completar todos los campos</a>';}
 		
 
 

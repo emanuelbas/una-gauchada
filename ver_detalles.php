@@ -39,7 +39,23 @@
 				echo '<p><b>Lugar</b>: ' .$fila['site'].'</p>';
 				echo '<p> <b>Categoria:</b> ' .$fila['category'].'</p>';
 				echo '<a href="">ver todas mis gauchadas</a>&nbsp;&nbsp;';
-				echo '<a href="index.php">volver al menu</a>';
+				echo '<a href="index.php">volver al menu</a>&nbsp;&nbsp;';
+				if ((isset($_SESSION['email']))){
+					//Aca voy a comprobar si estoy postulado
+					$query = "SELECT * FROM postulaciones WHERE `id_gauchada` = ".$fila["id"]." AND `email` = '".$_SESSION['email']."'";
+					$res = mysqli_query($conn,$query);
+
+					if( mysqli_num_rows($res) < 1){
+						if (!($fila['selected'] <> '')){
+							if ($fila['owner'] <> $_SESSION['email']) {
+								echo '<form method ="post" action ="postular.php">';
+								echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
+								echo '<INPUT type="submit" value="Postularme">';
+								echo '</form>';
+							} //else echo "Usuario dueño de la gauchada";
+						} //else  echo "Ya hay un seleccionado";
+					} //else echo "Ya esta postulado";
+				} else echo "<a href='iniciar_sesion.php'>Inicia sesion para postularte</a>";
 			?>
 
 		</div>	

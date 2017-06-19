@@ -1,16 +1,16 @@
 <?php
 	include 'conectar.php';
-	$consulta = "SELECT name FROM categorias";
-	$respuesta = mysqli_query($conn,$consulta);
 ?>
 
 <html>
-<?php include 'head.php'; ?>
+<?php 
+	include 'head.php';
+ ?>
 <body>
 	<div class="form-crear-cuenta">
 	    <form enctype="multipart/form-data" method="post" action="publicar.php">
 			<fieldset>
-				<legend>Formulario de Contacto</legend>
+				<legend>Publicar una gauchada</legend>
 				<label>Ingrese el titulo</label>
 	            <INPUT REQUIRED id=titulo size=32 name=titulo> 
 	            
@@ -29,6 +29,8 @@
 					<?php
 						echo '<select id="cat" name="cat">';
 						//echo '<option value="ninguna" selected="selected">- Seleccione una categoria -</option> '; Con esto se podria hacer que aparezca una preseleccionada
+						$consulta = "SELECT name FROM categorias";
+						$respuesta = mysqli_query($conn,$consulta);
 						while ($fila = mysqli_fetch_array($respuesta, MYSQL_NUM)){
 							echo '<option value='.$fila[0].'>'.$fila[0].'</option>';
 						}
