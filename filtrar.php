@@ -1,4 +1,3 @@
-
 <?php  
 	include 'conectar.php';
 	$consulta = "SELECT name FROM categorias"; // Aca se arma la query para luego ejecutarla
@@ -62,7 +61,7 @@ if(isset ($_POST['tit'])){ // continuas armando la query que vas a ejecutar
 	
 		else
 		{
-			$sql="WHERE title like '%$tit%'";
+			$sql="WHERE title like '%$tit'";
 		}
 	}
 	//$consulta= $consulta."title='".$tit."' AND ";
@@ -109,7 +108,7 @@ if(isset ($_POST['lug'])){ // continuas armando la query que vas a ejecutar
 		}
 		else
 		{
-			$consulta = ( "SELECT * FROM publicaciones ORDER BY publication_date DESC");
+			$consulta = ( "SELECT * FROM publicaciones");
 		}
 /* con el "pre" imprimis la query que fuiste armando
 	
@@ -119,49 +118,15 @@ if(isset ($_POST['lug'])){ // continuas armando la query que vas a ejecutar
 
 	
 */	$resultado = mysqli_query($conn,$consulta);
-	//echo $consulta;
+	echo $consulta;
 	
 	while($fila =  mysqli_fetch_array($resultado,MYSQLI_ASSOC))
 	{	
-		echo '<div align="left" style="border:1px solid #dbdbdb;padding:2% 1%; border-radius: 10px; 0 auto; width:35%;"><h2></h2>';
-		if($fila['image']=='') 
-			echo "<img src=images/logo.png>";
-		else 
-			echo "<img src='data:image/jpg;base64,".base64_encode($fila['image'])."'/>";
-		echo '<h2><p>' .$fila['title'].'</p></h2>';
+
+		echo '<h2><p><b>Titulo:</b>' .$fila['title'].'</p></h2>';
 		echo '<p>' .$fila['body']. '</p>';
-		//echo '<p><b>Lugar</b>: ' .$fila['site']. '</p>';
-		//echo '<p> <b>Categoria:</b> ' .$fila['category']. '</p>';
-		echo '<a href="ver_detalles.php?id='.$fila['id'].'">Ver detalles</a></div>';
-
-	}	
-
-}
-else
-{
-	$consulta = ( "SELECT * FROM publicaciones ORDER BY publication_date DESC");
-		
-/* con el "pre" imprimis la query que fuiste armando
-	
-	echo "<pre>";
-	print_r($resultado);
-	echo"</pre>";
-
-	
-*/	$resultado = mysqli_query($conn,$consulta);
-	//echo $consulta;
-	
-	while($fila =  mysqli_fetch_array($resultado,MYSQLI_ASSOC))
-	{
-		echo '<br>';
-		if($fila['image']=='') 
-			echo "<img src=images/logo.png>";
-		else 
-			echo "<img src='data:image/jpg;base64,".base64_encode($fila['image'])."'/>";
-		echo '<div align="left" style="border:1px solid #dbdbdb;padding:2% 1%; border-radius: 10px; 0 auto; width:35%;"><h2><p>' .$fila['title'].'</p></h2>';
-		echo '<p>' .$fila['body']. '</p>';
-		//echo '<p><b>Lugar</b>: ' .$fila['site']. '</p>';
-		//echo '<p> <b>Categoria:</b> ' .$fila['category']. '</p>';
+		echo '<p><b>Lugar</b>: ' .$fila['site']. '</p>';
+		echo '<p> <b>Categoria:</b> ' .$fila['category']. '</p>';
 		echo '<a href="ver_detalles.php?id='.$fila['id'].'">Ver detalles</a></div>';
 	}	
 

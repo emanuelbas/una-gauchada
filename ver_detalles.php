@@ -38,8 +38,12 @@
 				echo '<p> <b>Fecha limite:</b> ' .$fila['limit_date'].'</p>';
 				echo '<p><b>Lugar</b>: ' .$fila['site'].'</p>';
 				echo '<p> <b>Categoria:</b> ' .$fila['category'].'</p>';
-				echo '<a href="">ver todas mis gauchadas</a>&nbsp;&nbsp;';
+				if (isset($_SESSION['email'])){
+					echo '<a href="ver_mis_gauchadas.php">ver todas mis gauchadas</a>&nbsp;&nbsp;';
+					echo '<a href="ver_mis_postulaciones.php">ver mis postulaciones</a>&nbsp;&nbsp;';
+				}
 				echo '<a href="index.php">volver al menu</a>&nbsp;&nbsp;';
+				//El siguiente if es un boton para postularse
 				if ((isset($_SESSION['email']))){
 					//Aca voy a comprobar si estoy postulado
 					$query = "SELECT * FROM postulaciones WHERE `id_gauchada` = ".$fila["id"]." AND `email` = '".$_SESSION['email']."'";
@@ -52,10 +56,28 @@
 								echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
 								echo '<INPUT type="submit" value="Postularme">';
 								echo '</form>';
-							} //else echo "Usuario dueño de la gauchada";
+							} //else echo "<a href='ver_postulantes.php'>Ver postulados</a>";
 						} //else  echo "Ya hay un seleccionado";
 					} //else echo "Ya esta postulado";
-				} else echo "<a href='iniciar_sesion.php'>Inicia sesion para postularte</a>";
+									//El siguiente if es un boton para ver y seleccionar postulantes
+					if ($_SESSION['email'] == $fila['owner']){
+						echo '<form method ="post" action ="ver_postulantes.php">';
+						echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
+						echo '<INPUT type="submit" value="Ver postulados">';
+						echo '</form>';
+
+						if (!($fila['selected'] == '') AND ($fila['selected_calification'] == 'pendiente')){ //Si hay algun seleccionado muestro un boton para calificarlo
+							echo '<form method ="post" action ="calificar_postulante.php">';
+							echo '<input type="hidden" name="email" value="'.$fila['selected'].'" />';
+							echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
+							echo '<INPUT type="submit" value="Calificar a '.$fila['selected'].'">';
+							echo '</form>';
+						}
+
+					}
+				} else echo "<a href='iniciar_sesion.php'>Inicia sesion para mas opciones</a>";
+
+
 			?>
 
 		</div>	

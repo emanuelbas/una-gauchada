@@ -53,7 +53,7 @@
 	}
 	else{
 		echo '<div align="center"><h2><img src="images/gaucho.jpg" width="15%">Usted adeuda una calificacion. Califique la gauchada pendiente para poder crear una nueva';
-		echo '<br /><a href="">Ver mis gauchadas(todavia no disponible)</a>'.' '.'<br /><a href="index.php">Volver al sitio</a></div>';
+		echo '<br /><a href="ver_mis_gauchadas.php">Ver mis gauchadas</a>'.' '.'<br /><a href="index.php">Volver al sitio</a></div>';
 	}
 	
 	mysqli_close($conn);

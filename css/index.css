@@ -175,4 +175,10 @@ fieldset{
    width: 100%;
    display: block;
 }
+table, th, td {
+    border: 1px solid black;
+}
 
+th, td {
+    padding: 15px;
+}

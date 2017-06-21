@@ -12,13 +12,14 @@
 	if((mysqli_num_rows($comprobar)) > 0){ //significa que el usuario existe y tiene bien la clave
 		
 		//me guardo un arreglo con email,nombre y apellido
-		$fila = mysqli_fetch_array($comprobar, MYSQL_NUM);
+		$fila = mysqli_fetch_array($comprobar, MYSQL_BOTH);
 		
 		session_start();
 		$_SESSION["email"]=$fila[0];
 		$_SESSION["name"]=$fila[1];
 		$_SESSION["last_name"]=$fila[2];
 		$_SESSION["IsAdministador"]=$fila[3];
+		
 		//Muestra en pantalla mensaje de exito y un link para continuar
 		header('Location: index.php');
 	}else{
