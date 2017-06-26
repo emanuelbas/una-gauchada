@@ -87,6 +87,7 @@
 	</div>
 	
 		<?php
+		if ((isset($_SESSION['email']))){
 			if ($fila['owner'] <> $_SESSION['email']){
 				//imprime el formulario para hacer una pregunta
 				//id_publication 	body 	answer 	user 	date 
@@ -100,6 +101,7 @@
 				
 				echo '</form><br><br></div>	';
 			}
+		}
 
 		?>
 	
