@@ -1,3 +1,4 @@
+
 <?php  
 	include 'conectar.php';
 	$consulta = "SELECT name FROM categorias"; // Aca se arma la query para luego ejecutarla
@@ -6,10 +7,12 @@
 	if($_POST==null){//CON ESTO LOGRO Q SE QUEDEN MARCADAS LAS OPCIONES DE TITULO Y LUGAR PERO NO SE COMO HACER LA DE CATEGORIA
 		$value="";
 		$value2="";
+		$value3="";
 	}
 	else{
 		$value=$_POST['tit'];
 		$value2=$_POST['lug'];
+		$value3=$_POST['cat'];
 	}
 ?>
 
@@ -19,7 +22,7 @@
 	<title></title>
 </head>
 <body >
-	<div><form method="POST" action="">
+	<div><form method="POST" action="filtrar.php">
 		<fieldset>
 			Buscar por titulo:
 			<input type="text" id="tit" name="tit" value="<?php echo $value; ?>">
@@ -28,7 +31,10 @@
 
 						echo 'Buscar por categoria:';
 						echo '<select id="cat" name="cat">';
+						if($_POST==null)
 						echo '<option value="ninguna" selected="selected">- Seleccione una categoria -</option> ';// Con esto se podria hacer que aparezca una preseleccionada
+						else
+							echo '<option value="'.$value3.'" selected="'.$value3.'">'.$value3.'</option>';
 						while ($fila = mysqli_fetch_array($respuesta, MYSQL_NUM)){
 							echo '<option value='.$fila[0].'>'.$fila[0].'</option>';
 						}
@@ -36,7 +42,7 @@
 			?>
 			Buscar por lugar:
 			<input type="text" id="lug" name="lug" value="<?php echo $value2; ?>">
-			<input type="submit" value="Filtrar"><input type="reset" value="Limpar">
+			<input type="submit" value="Filtrar"><input type="reset" value="Limpar" autofocus>
 		</fieldset>
 
 	</form>
@@ -61,10 +67,10 @@ if(isset ($_POST['tit'])){ // continuas armando la query que vas a ejecutar
 	
 		else
 		{
-			$sql="WHERE title like '%$tit'";
+			$sql="WHERE title like '%$tit%'";
 		}
 	}
-	//$consulta= $consulta."title='".$tit."' AND ";
+	
 
 }
 
@@ -78,10 +84,9 @@ if(isset ($_POST['cat'])){ // continuas armando la query que vas a ejecutar
 			}
 		else 
  		{
-			$sql = "WHERE category LIKE '%$cat%'";	
+			$sql = "WHERE category like '%$cat%'";	
 		}
 	}
-	//$consulta= $consulta."category='".$cat."' AND ";
 
 //}
 
@@ -104,11 +109,16 @@ if(isset ($_POST['lug'])){ // continuas armando la query que vas a ejecutar
 }
 }
 		if($sql!=''){
-			$consulta = ( "SELECT * FROM publicaciones ". $sql);
+
+			$sql.="AND limit_date  >= CURRENT_DATE()";
+			//$consulta = ( "SELECT * FROM publicaciones ". $sql);
+			$consulta = ( "SELECT count(*) FROM publicaciones INNER JOIN postulaciones  ON (publicaciones.id=postulaciones.id_gauchada) GROUP BY count(postulaciones.email)". $sql ."ORDER BY count(email) ASC") ;
+			;
+
 		}
 		else
 		{
-			$consulta = ( "SELECT * FROM publicaciones");
+			$consulta = ( "SELECT * FROM publicaciones WHERE limit_date >=CURRENT_DATE() ORDER BY publication_date DESC");
 		}
 /* con el "pre" imprimis la query que fuiste armando
 	
@@ -118,15 +128,50 @@ if(isset ($_POST['lug'])){ // continuas armando la query que vas a ejecutar
 
 	
 */	$resultado = mysqli_query($conn,$consulta);
-	echo $consulta;
+	//echo $consulta;
+	//echo $resultado;
 	
 	while($fila =  mysqli_fetch_array($resultado,MYSQLI_ASSOC))
 	{	
-
+		echo '<div align="left" style="border:1px solid #dbdbdb;padding:2% 1%; border-radius: 10px; 0 auto; width:35%;"><h2></h2>';
+		if($fila['image']=='') 
+			echo "<img src=images/logo.png>";
+		else 
+			echo "<img src='data:image/jpg;base64,".base64_encode($fila['image'])."'/>";
 		echo '<h2><p><b>Titulo:</b>' .$fila['title'].'</p></h2>';
 		echo '<p>' .$fila['body']. '</p>';
-		echo '<p><b>Lugar</b>: ' .$fila['site']. '</p>';
-		echo '<p> <b>Categoria:</b> ' .$fila['category']. '</p>';
+		//echo '<p><b>Lugar</b>: ' .$fila['site']. '</p>';
+		//echo '<p> <b>Categoria:</b> ' .$fila['category']. '</p>';
+		echo '<a href="ver_detalles.php?id='.$fila['id'].'">Ver detalles</a></div>';
+
+	}	
+
+}
+else
+{
+	$consulta = ( "SELECT * FROM publicaciones WHERE limit_date >=CURRENT_DATE() ORDER BY publication_date DESC");
+		
+/* con el "pre" imprimis la query que fuiste armando
+	
+	echo "<pre>";
+	print_r($resultado);
+	echo"</pre>";
+
+	
+*/	$resultado = mysqli_query($conn,$consulta);
+	//echo $consulta;
+	
+	while($fila =  mysqli_fetch_array($resultado,MYSQLI_ASSOC))
+	{	
+		echo '<div align="left" style="border:1px solid #dbdbdb;padding:2% 1%; border-radius: 10px; 0 auto; width:35%;"><h2></h2>';
+		if($fila['image']=='') 
+			echo "<img src=images/logo.png>";
+		else 
+			echo "<img src='data:image/jpg;base64,".base64_encode($fila['image'])."'/>";
+		echo '<h2><p><b>Titulo:</b>' .$fila['title'].'</p></h2>';
+		echo '<p>' .$fila['body']. '</p>';
+		//echo '<p><b>Lugar</b>: ' .$fila['site']. '</p>';
+		//echo '<p> <b>Categoria:</b> ' .$fila['category']. '</p>';
 		echo '<a href="ver_detalles.php?id='.$fila['id'].'">Ver detalles</a></div>';
 	}	
 

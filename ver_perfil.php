@@ -9,7 +9,7 @@ if($fila =  mysqli_fetch_array($res,MYSQLI_ASSOC));{
 	echo '<p><b>Nombre</b>:'. $fila['name'].' </p>';
 	echo '<p><b>Apellido</b>:'. $fila['last_name'].' </p>';
 	echo '<p><b>Email</b>:'. $fila['email'].' </p>';
-	echo '<p><b>Telefono</b>:'. $fila['phones'].' </p>';
+	echo '<p><b>Telefono</b>:'. $fila['phone'].' </p>';
 	echo '<p><b>Creditos</b>:'. $fila['credit'].' </p>';
 	echo '<p><b>Reputacion</b>:'. $fila['reputation'].' </p>';
 	echo '<div><a href="modificar_perfil.php">Modificar perfil</a></div>';

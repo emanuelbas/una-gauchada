@@ -46,21 +46,24 @@
 				//El siguiente if es un boton para postularse
 				if ((isset($_SESSION['email']))){
 					//Aca voy a comprobar si estoy postulado
-					$query = "SELECT * FROM postulaciones WHERE `id_gauchada` = ".$fila["id"]." AND `email` = '".$_SESSION['email']."'";
+					$query = "SELECT * FROM postulaciones WHERE 'id_gauchada' = ".$fila["id"]." AND 'email' = '".$_SESSION['email']."'";
 					$res = mysqli_query($conn,$query);
 
-					if( mysqli_num_rows($res) < 1){
+					if( mysqli_num_rows($res) == 1){
 						if (!($fila['selected'] <> '')){
 							if ($fila['owner'] <> $_SESSION['email']) {
 								echo '<form method ="post" action ="postular.php">';
 								echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
 								echo '<INPUT type="submit" value="Postularme">';
 								echo '</form>';
-							} //else echo "<a href='ver_postulantes.php'>Ver postulados</a>";
+							} 
 						} //else  echo "Ya hay un seleccionado";
 					} //else echo "Ya esta postulado";
-									//El siguiente if es un boton para ver y seleccionar postulantes
+									//OPCIONES DE AUTOR
 					if ($_SESSION['email'] == $fila['owner']){
+						echo "<a href='eliminar_gauchada.php?id=".$fila['id']."'>Eliminar gauchada</a>&nbsp;&nbsp;";
+						echo "<a href='ver_postulantes.php'>Modificar gauchada</a>&nbsp;&nbsp;"; //COLOCAR LINK A MODIFICAR ACA@@@@@####
+
 						echo '<form method ="post" action ="ver_postulantes.php">';
 						echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
 						echo '<INPUT type="submit" value="Ver postulados">';
@@ -81,6 +84,52 @@
 			?>
 
 		</div>	
+	</div>
+	
+		<?php
+			if ($fila['owner'] <> $_SESSION['email']){
+				//imprime el formulario para hacer una pregunta
+				//id_publication 	body 	answer 	user 	date 
+				echo '<div class = "det-form-question" ><form method="post" action="agregar_pregunta.php">';
+
+				echo '<INPUT REQUIRED style="WIDTH: 100%" name="body" type="text" placeholder="deja tu pregunta aca"><br>';
+				echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
+				echo '<input type="hidden" name="user" value="'.$_SESSION["email"].'" />';
+
+				echo '<INPUT type="submit" value="enviar">';
+				
+				echo '</form><br><br></div>	';
+			}
+
+		?>
+	
+	<div class = "det-questions" >
+		<?php
+			echo '<h2> Preguntas al autor </h2><br>';
+			$sql = "SELECT * FROM preguntas WHERE id_publication = ".$fila["id"]." ORDER BY date DESC";
+			$res = $conn -> query($sql);
+			while ($pregunta = $res -> fetch_array()){
+				echo '<div class = "det-pregunta"><p> <b>'.$pregunta["user"].'</b> pregunta: <br>';
+				echo $pregunta["body"];
+				if ($pregunta['answer'] <> ''){
+					echo '<br><div class = "det-answers"> <b>Respuesta: </b>'.$pregunta["answer"].' </div>';
+				} else {
+					//si $seesion es $fila [owner] imprime un formulario para que el dueño deje una respuesta
+					if ($fila['owner'] == $_SESSION['email']){
+						echo '<br><div class = "det-form-respuesta"> ';
+						echo '<form method="post" action="agregar_respuesta.php">';
+
+						echo '<INPUT REQUIRED name="body" type="text" placeholder="deja tu respuesta aca"><br>';
+						echo '<input type="hidden" name="id" value="'.$pregunta['id'].'" />';
+
+						echo '<INPUT type="submit" value="Agregar respuesta">';
+						
+						echo '</form></div><br><br>';
+					}
+				}
+				echo '</div>';
+			}
+		?>
 	</div>
 
 </body>

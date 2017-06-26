@@ -20,8 +20,11 @@
 			if ($sql->num_rows == 0){
 				
 				//Inserto el nuevo usuario
-				$sql = "INSERT INTO usuarios (email, phone, name, last_name, IsAdministrador, credit, password, reputation, score)
-					VALUES ('$email','$phone', $name','$last_name',0,0,'$password1','Nuevo',0)";
+				$sql = "INSERT INTO usuarios (email, name, last_name, IsAdministrador, credit, password, reputation, score, phone)
+					VALUES ('$email', '$name','$last_name',0,0,'$password1','Nuevo',0,'$phone')";
+				/*echo "<pre>";
+				print_r($sql);
+				echo"</pre>";*/
 				if ($conn->query($sql)){
 					echo "<div class = 'Det-post-article'><h2> Datos registrados:</h2> ";
 					echo "<b>Nombre:</b> ".$name."<br>";
