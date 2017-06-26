@@ -62,8 +62,14 @@
 									//OPCIONES DE AUTOR
 					if ($_SESSION['email'] == $fila['owner']){
 						echo "<a href='eliminar_gauchada.php?id=".$fila['id']."'>Eliminar gauchada</a>&nbsp;&nbsp;";
-						echo "<a href='ver_postulantes.php'>Modificar gauchada</a>&nbsp;&nbsp;"; //COLOCAR LINK A MODIFICAR ACA@@@@@####
+						
+						//Aca tengo que mostrar un boton para modificarla solo si no hay ningun postulado para $fila['id']
+						echo '<form method ="post" action ="modificar_gauchada.php">';
+						echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
+						echo '<INPUT type="submit" value="Modificar gauchada">';
+						echo '</form>';
 
+						//Boton para ver postulados
 						echo '<form method ="post" action ="ver_postulantes.php">';
 						echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
 						echo '<INPUT type="submit" value="Ver postulados">';
