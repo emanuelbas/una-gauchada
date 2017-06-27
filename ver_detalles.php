@@ -123,16 +123,17 @@
 					echo '<br><div class = "det-answers"> <b>Respuesta: </b>'.$pregunta["answer"].' </div>';
 				} else {
 					//si $seesion es $fila [owner] imprime un formulario para que el dueño deje una respuesta
-					if ($fila['owner'] == $_SESSION['email']){
-						echo '<br><div class = "det-form-respuesta"> ';
-						echo '<form method="post" action="agregar_respuesta.php">';
+					if (isset($_SESSION['email'])) 
+						if ($fila['owner'] == $_SESSION['email']){
+							echo '<br><div class = "det-form-respuesta"> ';
+							echo '<form method="post" action="agregar_respuesta.php">';
 
-						echo '<INPUT REQUIRED name="body" type="text" placeholder="deja tu respuesta aca"><br>';
-						echo '<input type="hidden" name="id" value="'.$pregunta['id'].'" />';
+							echo '<INPUT REQUIRED name="body" type="text" placeholder="deja tu respuesta aca"><br>';
+							echo '<input type="hidden" name="id" value="'.$pregunta['id'].'" />';
 
-						echo '<INPUT type="submit" value="Agregar respuesta">';
-						
-						echo '</form></div><br><br>';
+							echo '<INPUT type="submit" value="Agregar respuesta">';
+							
+							echo '</form></div><br><br>';
 					}
 				}
 				echo '</div>';
