@@ -35,8 +35,8 @@
 			echo "<br>";
 		}	
          $borrado= "DELETE FROM publicaciones WHERE id=$id";
-         echo $borrado;
          $modBorrar=mysqli_query($conn,$borrado);
+         header('Location: index.php');
  	}
  	else {
  		 $devolver= "select credit from usuarios where email='".$publicacion['owner']."'";
@@ -46,8 +46,8 @@
 	     $modif= "UPDATE usuarios SET credit = '".$cantCred['credit']."' WHERE email='".$publicacion['owner']."'";
          $mod=mysqli_query($conn,$modif);
          $borrado= "DELETE FROM publicaciones WHERE id=$id";
-         echo $borrado;
          $modBorrar=mysqli_query($conn,$borrado);
+         header('Location: index.php');
     }
  }
 
