@@ -12,7 +12,7 @@ echo "<tr><th>Gauchada</th><th>Calificacion</th><th>Detalles</th></tr>";
 while ($publicacion = $res -> fetch_array()){
 	$nombre = $publicacion['title'];
 	if ($publicacion['selected'] == $_SESSION['email']) $calificacion = $publicacion['selected_calification']; else $calificacion = "No seleccionado";
-	$boton = '<a href="ver_detalles.php?id='.$publicacion['id'].'">Ver detalles</a></div>';
+	$boton = '<a href="ver_detalles.php?id='.$publicacion['id_gauchada'].'">Ver detalles</a></div>';
 	echo "<tr><td>".$nombre."</td><td>".$calificacion."</td><td>".$boton."</td></tr>";
 }
 

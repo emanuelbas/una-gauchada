@@ -46,10 +46,10 @@
 				//El siguiente if es un boton para postularse
 				if ((isset($_SESSION['email']))){
 					//Aca voy a comprobar si estoy postulado
-					$query = "SELECT * FROM postulaciones WHERE 'id_gauchada' = ".$fila["id"]." AND 'email' = '".$_SESSION['email']."'";
+					$query = "SELECT * FROM postulaciones WHERE id_gauchada = ".$fila["id"]." AND email = '".$_SESSION['email']."'";
 					$res = mysqli_query($conn,$query);
-
-					if( mysqli_num_rows($res) == 1){
+					//me va a dar todas las postulaciones pertenecientes a esta gauchada en las que soy el postulante
+					if( mysqli_num_rows($res) == 0){ //No estoy postulado a esta gauchada
 						if (!($fila['selected'] <> '')){
 							if ($fila['owner'] <> $_SESSION['email']) {
 								echo '<form method ="post" action ="postular.php">';

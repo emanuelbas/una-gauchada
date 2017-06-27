@@ -6,7 +6,7 @@ include "head.php";
 
 $sql = "SELECT * FROM publicaciones WHERE '".$_SESSION['email']."' = owner";
 $res = $conn -> query($sql);
-
+echo "<div>";
 echo "<h2> Gauchadas que tu creaste </h2><table>";
 echo "<tr><th>Gauchada</th><th>Estado</th><th>Detalles</th></tr>";
 while ($publicacion = $res -> fetch_array()){
@@ -18,6 +18,7 @@ while ($publicacion = $res -> fetch_array()){
 	$boton = '<a href="ver_detalles.php?id='.$publicacion['id'].'">Ver detalles</a></div>';
 	echo "<tr><td>".$nombre."</td><td>".$estado."</td><td>".$boton."</td></tr>";
 }
+echo "</div>";
 
 
 ?>

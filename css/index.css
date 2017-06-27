@@ -36,7 +36,7 @@ span{
 
 .det-post{
 	margin: 20px;
-	border: solid 1px;
+
 }
 
 .det-post-image{
@@ -57,6 +57,7 @@ span{
 	padding: 10 50 10 50;
 	border: solid 1px;
 	border-radius: 10px;
+  background: #ff9933;
 }
 
 
