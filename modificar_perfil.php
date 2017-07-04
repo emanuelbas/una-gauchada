@@ -1,7 +1,10 @@
 <?php 
 	include 'conectar.php';
 	include 'head.php';
-	
+	$sql = 'SELECT * FROM usuarios WHERE "'.$_SESSION["email"].'" = email'; 
+	$res = $conn -> query($sql);
+	$user = $res -> fetch_array();
+	//Ahora tengo $user['name'] $user['last_name'] $user['phone']
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,13 +17,13 @@
 		
 	
 		<label><h3>Ventana para modificar perfil</h3></label>
-		<label>Nombre: </label><input  type="text" maxlength="30" name="name"  placeholder="Ingresa Nombre">
-		<label>Apellido: </label><input type="text" maxlength="30" name="last_name"  placeholder="Ingresa Apellido">
-		<label>Telefono: </label><input  type="numbrer" placeholder="2214508022" maxlength="16" name="phone">
-		<label>Nueva clave: </label><input  type="password" maxlength="30" name="password1"  placeholder="Ingresa Una Clave">
-		<label>Confirmar nueva clave: </label><input type="password" maxlength="30" name="password2"  placeholder="Ingresa Nuevamente una Clave">
+		<label>Nombre: </label><input  type="text" maxlength="30" name="name" value='<?php echo $user['name']; ?>' placeholder="Ingresa Nombre">
+		<label>Apellido: </label><input type="text" maxlength="30" name="last_name" value='<?php echo $user['last_name']; ?>' placeholder="Ingresa Apellido">
+		<label>Telefono: </label><input  type="numbrer" placeholder="2214508022" value='<?php echo $user['phone']; ?>' maxlength="16" name="phone">
+		<label>Nueva clave: </label><input  type="password" maxlength="30" name="password1"  placeholder="Ingresa una Nueva Clave">
+		<label>Confirmar nueva clave: </label><input type="password" maxlength="30" name="password2"  placeholder="Repite la clave">
 		
-		<input type="submit" value="Modificar perfil" /><a href="index.php">Volver</a>
+		<input type="submit" value="Guardar cambios" /><a href="index.php">Volver</a>
 	
 </form>
 </div>
@@ -98,7 +101,10 @@
 			$consulta="UPDATE usuarios SET ".$sql."WHERE email='".$user."'";
 		//	echo $consulta;
 			$res=mysqli_query($conn,$consulta) or die(mysqli_error($conn));
+			$conn->close();	
+			header('Location: ver_perfil.php');
 			
 		}
-		
+
+
 ?>	

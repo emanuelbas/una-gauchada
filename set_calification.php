@@ -9,7 +9,8 @@ $conn -> query($sql);
 if ($_POST['calification'] <> 'neutral'){ //Si es neutral no debo tocar nada, pero si es diferente leo datos y pregunto si es positiva o negativa
 	$sql = "SELECT * FROM usuarios WHERE email ='".$_POST['email']."'";
 	$res = $conn -> query($sql);
-	$datos = $res -> fetch_array(); // mysql_query($sql), MYSQLI_BOTH);
+	$datos = $res -> fetch_array();
+// mysql_query($sql), MYSQLI_BOTH);
 	if ($_POST['calification'] == 'positive'){
 		$datos['credit'] = $datos['credit'] + 1;
 		$datos['score'] = $datos['score'] + 2;
@@ -23,7 +24,8 @@ if ($_POST['calification'] <> 'neutral'){ //Si es neutral no debo tocar nada, pe
 	$datos['reputation'] = $repu['name'];
 
 	//Update set
-	$sql = "UPDATE usuarios SET credit =".$datos['credit'].", score = ".$datos['score'].", reputation = ".$datos['reputation']." WHERE email = '".$datos['email']."'";
+	$sql = "UPDATE usuarios SET credit =".$datos['credit'].", score = ".$datos['score'].", reputation = '".$datos['reputation']."' WHERE email = '".$datos['email']."'";
+
 	$conn -> query($sql);
 
 }
