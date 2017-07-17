@@ -29,7 +29,7 @@
 
 	//Categoria
 	echo '<p>Categoria</p><select id="cat" name="cat">';
-	$consulta = "SELECT name FROM categorias";
+	$consulta = "SELECT name FROM categorias WHERE available=1";
 	$respuesta = mysqli_query($conn,$consulta);
 	echo '<option value="'.$gauchada['category'].'" selected>'.$gauchada['category'].'</option> ';
 	while ($fila = mysqli_fetch_array($respuesta, MYSQL_NUM)){

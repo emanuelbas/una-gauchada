@@ -82,7 +82,7 @@
 	echo "<h4>Agregar reputacion</h4>";
 	echo "<form method='POST'action='agregar_reputacion.php'>";
 	echo "<table><tr>";
-	echo "<th><input type='submit' value='+'></th><th><input name='name' type='text'></th><th><input name='score' type='number'></th>";
+	echo "<th><input type='submit' value='+'></th><th><input name='name' type='text' required></th><th><input name='score' type='number' required></th>";
 	echo "</tr></table>";
 	echo "</form>";
 

@@ -29,7 +29,7 @@
 					<?php
 						echo '<select id="cat" name="cat">';
 						//echo '<option value="ninguna" selected="selected">- Seleccione una categoria -</option> '; Con esto se podria hacer que aparezca una preseleccionada
-						$consulta = "SELECT name FROM categorias";
+						$consulta = "SELECT name FROM categorias WHERE available=1";
 						$respuesta = mysqli_query($conn,$consulta);
 						while ($fila = mysqli_fetch_array($respuesta, MYSQL_NUM)){
 							echo '<option value='.$fila[0].'>'.$fila[0].'</option>';

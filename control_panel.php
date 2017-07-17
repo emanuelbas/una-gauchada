@@ -1,4 +1,4 @@
-
+p
 <?php
 	include "head.php";
 	include "conectar.php";
@@ -11,7 +11,7 @@
 
 		echo "<li><a href='alta_reputacion_pantalla.php'> Configurar reputaciones<a></li><br> ";
 		echo "<li><a href='COMPLEATAR'> Ver recaudaciones<a></li><br> ";
-		echo "<li><a href='COMPLEATAR'> Configurar categorias<a></li><br> ";
+		echo "<li><a href='ventana_categorias.php'> Configurar categorias<a></li><br> ";
 		echo "<li><a href='COMPLEATAR'> Ver ganancias entre fechas<a></li><br> ";
 		echo "<li><a href='COMPLEATAR'> Ver tabla de puntuaciones<a></li><br> ";
 
