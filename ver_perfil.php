@@ -1,9 +1,13 @@
-<?php  include'conectar.php';
+<?php  
 include 'head.php';
-$user= $_SESSION['email'];
-$consulta="SELECT * FROM usuarios WHERE email ='$user'";
-$res= mysqli_query($conn,$consulta);
-if($fila =  mysqli_fetch_array($res,MYSQLI_ASSOC));{
+include'conectar.php';
+
+$user = $_SESSION['email'];
+
+$sql = "SELECT * FROM usuarios WHERE email='".$user."'";
+$res = $conn -> query($sql);
+
+if($fila =  $res -> fetch_array());{
 	echo '<div align="left" style="border:1px solid #dbdbdb;padding:2% 1%; border-radius: 10px; 0 auto; width:35%;"><h2></h2>';
 	echo '<p><b>Mi perfil</b></p>';
 	echo '<p><b>Nombre</b>:'. $fila['name'].' </p>';
@@ -18,4 +22,5 @@ if($fila =  mysqli_fetch_array($res,MYSQLI_ASSOC));{
 	echo '<div><a href="index.php">Volver a inicio</a></div>';
 
 }
+$conn -> close();
 ?>

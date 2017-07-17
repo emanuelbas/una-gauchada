@@ -10,28 +10,22 @@ if ($_POST['calification'] <> 'neutral'){ //Si es neutral no debo tocar nada, pe
 	$sql = "SELECT * FROM usuarios WHERE email ='".$_POST['email']."'";
 	$res = $conn -> query($sql);
 	$datos = $res -> fetch_array();
-// mysql_query($sql), MYSQLI_BOTH);
+
 	if ($_POST['calification'] == 'positive'){
 		$datos['credit'] = $datos['credit'] + 1;
 		$datos['score'] = $datos['score'] + 2;
 
 	} else $datos['score'] = $datos['score'] - 2;
 
-	//Hay que revisar en que grado quedo el score, y guardar el nombre del grado en $datos['reputation']
-	$sql = "SELECT name FROM reputaciones WHERE ".$datos['score']." BETWEEN min AND max";
-	$res = $conn -> query($sql);
-	$repu = $res -> fetch_array(); 
-	$datos['reputation'] = $repu['name'];
-
-	//Update set
-	$sql = "UPDATE usuarios SET credit =".$datos['credit'].", score = ".$datos['score'].", reputation = '".$datos['reputation']."' WHERE email = '".$datos['email']."'";
-
+	$sql = "UPDATE usuarios SET credit =".$datos['credit'].", score = ".$datos['score']." WHERE email = '".$datos['email']."'";
 	$conn -> query($sql);
+	include "recalcular_reputaciones.php";
+
+	
 
 }
 	
 
-
 header('Location: index.php');
-mysqli_close($conn);
+
 ?>

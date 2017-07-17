@@ -21,7 +21,7 @@
 				
 				//Inserto el nuevo usuario
 				$sql = "INSERT INTO usuarios (email, name, last_name, IsAdministrador, credit, password, reputation, score, phone)
-					VALUES ('$email', '$name','$last_name',0,0,'$password1','Nuevo',0,'$phone')";
+					VALUES ('$email', '$name','$last_name',0,0,'$password1','Observador',0,'$phone')";
 				/*echo "<pre>";
 				print_r($sql);
 				echo"</pre>";*/
