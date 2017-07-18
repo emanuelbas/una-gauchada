@@ -16,7 +16,7 @@
 
 	//Registro la compra
 	$sql = "INSERT INTO compras (email, date, price, amount)
-			VALUES ('$email', CURRENT_DATE(), '$amount*50', '$amount')";
+			VALUES ('$email', CURRENT_DATE(), '50', '$amount')";
 			
 	if ($conn->query($sql) === TRUE) {
 		echo "Se registro el pago!";

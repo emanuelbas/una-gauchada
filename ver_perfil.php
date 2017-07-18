@@ -19,6 +19,7 @@ if($fila =  $res -> fetch_array());{
 	echo '<div><a href="modificar_perfil.php">Modificar perfil</a></div>';
 	echo '<div><a href="ver_mis_gauchadas.php">Ver mis gauchadas</a></div>';
 	echo '<div><a href="ver_mis_postulaciones.php">Ver mis postulaciones</a></div>';
+	echo '<div><a href="ver_mis_calificaciones.php">Ver mis calificaciones</a></div>';
 	echo '<div><a href="index.php">Volver a inicio</a></div>';
 
 }

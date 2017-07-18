@@ -90,9 +90,9 @@ span{
 }
 .nav-icono{ 
 	position:absolute;
-	top:85%;
-	left:45%;
-	width: 20%;	
+	top:0%;
+	left:1%;
+	width: 30%;	
 	border:none;
 	z-index:10000;
 }

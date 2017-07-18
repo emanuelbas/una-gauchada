@@ -64,16 +64,19 @@
 						echo "<a href='eliminar_gauchada.php?id=".$fila['id']."'>Eliminar gauchada</a>&nbsp;&nbsp;";
 						
 						//Aca tengo que mostrar un boton para modificarla solo si no hay ningun postulado para $fila['id']
-						echo '<form method ="post" action ="modificar_gauchada.php">';
-						echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
-						echo '<INPUT type="submit" value="Modificar gauchada">';
-						echo '</form>';
-
-						//Boton para ver postulados
-						echo '<form method ="post" action ="ver_postulantes.php">';
-						echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
-						echo '<INPUT type="submit" value="Ver postulados">';
-						echo '</form>';
+						$con = $conn -> query("SELECT * FROM postulaciones WHERE id_gauchada='".$fila['id']."'") -> num_rows;
+						if ($con == 0){
+							echo '<form method ="post" action ="modificar_gauchada.php">';
+							echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
+							echo '<INPUT type="submit" value="Modificar gauchada">';
+							echo '</form>';
+						} else {
+							//Boton para ver postulados
+							echo '<form method ="post" action ="ver_postulantes.php">';
+							echo '<input type="hidden" name="id" value="'.$fila['id'].'" />';
+							echo '<INPUT type="submit" value="Ver postulados">';
+							echo '</form>';
+						}
 
 						if (!($fila['selected'] == '') AND ($fila['selected_calification'] == 'pendiente')){ //Si hay algun seleccionado muestro un boton para calificarlo
 							echo '<form method ="post" action ="calificar_postulante.php">';
