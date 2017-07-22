@@ -25,7 +25,7 @@
 		$row = $res -> fetch_array();
 
 		if ($row['IsAdministrador']==1){
-			echo '<li><a href="mostrar_ranking.php">Ranking</a></li> '.'<li><a href="ventana_categorias.php">Congigurar categorias</a></li> '.'<li><a href="mostrar_recaudaciones.php">Ver recaudaciones</a></li> '.'<li><a href="cerrar_sesion.php">Cerrar sesion</a></li> ';
+			echo '<li><a href="mostrar_ranking.php">Ranking</a></li> '.'<li><a href="ventana_categorias.php">Configurar categorias</a></li> '.'<li><a href="mostrar_recaudaciones.php">Ver recaudaciones</a></li> '.'<li><a href="alta_reputacion_pantalla.php">Configurar reputaciones</a></li> '.'<li><a href="cerrar_sesion.php">Cerrar sesion</a></li> ';
 		} else {
 		echo '<li><a href="comprar_credito.php">Comprar credito</a></li> '.'<li><a href="cerrar_sesion.php">Cerrar sesion</a></li> &nbsp;'.'<li><a href="publicar_gauchada.php">Publicar gauchada</a></li>'.'<li><a href="ver_perfil.php">Ver perfil</a></li> &nbsp;';
 		}

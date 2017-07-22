@@ -18,6 +18,8 @@
 		} else {
 			$sql = "UPDATE categorias SET available=1, name='".$name."' WHERE name='".$old_name."'";
 			$conn -> query($sql);
+			$sql = "UPDATE publicaciones SET category='".$name."' WHERE category='".$old_name."'";
+			$conn -> query($sql);
 			header('Location: ventana_categorias.php');
 		}
 	}

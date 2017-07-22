@@ -16,10 +16,11 @@ $category = $_POST['cat'];
 if (($_FILES['image']['tmp_name']) != "") {
 					//Si se leyo una imagen la almaceno en la BD
 					$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-					$sql = "UPDATE publicaciones SET limit_date = $limit_date, body = '$body', site = '$site', title = '$title', image = '$image', category = '$category' WHERE id = $id";
+					$sql = "UPDATE publicaciones SET limit_date = '$limit_date', body = '$body', site = '$site', title = '$title', image = '$image', category = '$category' WHERE id = $id";
 }else {
-	$sql = "UPDATE publicaciones SET limit_date = $limit_date, body = '$body', site = '$site', title = '$title', category = '$category' WHERE id = $id";
+	$sql = "UPDATE publicaciones SET limit_date = '$limit_date', body = '$body', site = '$site', title = '$title', category = '$category' WHERE id = $id";
 }
+
 $conn -> query($sql);
 header('Location: index.php');
 $conn -> close();
